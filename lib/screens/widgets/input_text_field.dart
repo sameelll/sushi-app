@@ -9,7 +9,6 @@ class InputTextField extends StatelessWidget {
       : super(key: key);
 
   final String label;
-
   final bool password;
 
   final TextEditingController controller;

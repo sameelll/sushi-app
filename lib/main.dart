@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:sushi_app/auth/auth_service.dart';
-import 'package:sushi_app/auth/wrapper.dart';
+import 'package:sushi_app/screens/splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       ],
       child: const GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Wrapper(),
+        home: SplashScreen(),
       ),
     );
   }

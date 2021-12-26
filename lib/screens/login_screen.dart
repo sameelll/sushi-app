@@ -8,8 +8,8 @@ import 'package:sushi_app/screens/widgets/login_form.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
 
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +46,8 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           LoginForm(
-            emailController: emailController,
-            passwordController: passwordController,
+            emailController: _emailController,
+            passwordController: _passwordController,
           ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -62,8 +62,8 @@ class LoginScreen extends StatelessWidget {
             height: 60,
           ),
           LoginButton(
-            email: emailController.text,
-            password: passwordController.text,
+            email: _emailController.text,
+            password: _passwordController.text,
           ),
           Container(
             alignment: Alignment.center,

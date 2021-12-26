@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 
 class AuthService {
   final FirebaseAuth _firebaseAuth;
@@ -14,6 +15,7 @@ class AuthService {
           email: email, password: password);
       return 'Signed In';
     } on FirebaseAuthException catch (e) {
+      Get.snackbar('Error', e.message.toString());
       return e.message;
     }
   }
