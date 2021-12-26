@@ -20,8 +20,12 @@ class GoogleBtn1 extends StatelessWidget {
       ),
       child: TextButton(
         style: ButtonStyle(
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15)))),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -32,8 +36,10 @@ class GoogleBtn1 extends StatelessWidget {
             const SizedBox(
               width: 10,
             ),
-            Text("Connect with Google",
-                style: TextStyle(color: Colors.grey.shade700, fontSize: 16)),
+            Text(
+              "Connect with Google",
+              style: TextStyle(color: Colors.grey.shade700, fontSize: 16),
+            ),
           ],
         ),
         onPressed: onPressed,
