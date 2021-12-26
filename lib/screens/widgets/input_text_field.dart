@@ -3,18 +3,21 @@ import 'package:flutter/material.dart';
 class InputTextField extends StatelessWidget {
   const InputTextField(
       {Key? key,
+      required this.controller,
       required this.label,
-      required this.onChange,
       this.password = false})
       : super(key: key);
 
   final String label;
-  final Function onChange;
+
   final bool password;
+
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       obscureText: password,
       decoration: InputDecoration(
         labelText: label,

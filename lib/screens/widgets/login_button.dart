@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sushi_app/auth/auth_service.dart';
 
 class LoginButton extends StatelessWidget {
+  final String email;
+  final String password;
+
   const LoginButton({
     Key? key,
+    required this.email,
+    required this.password,
   }) : super(key: key);
 
   @override
@@ -26,7 +33,9 @@ class LoginButton extends StatelessWidget {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
               )),
           onPressed: () {
-            
+            context
+                .read<AuthService>()
+                .signIn(email: email, password: password);
           },
           child: const Text(
             "Login",

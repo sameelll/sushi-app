@@ -1,40 +1,31 @@
-import 'package:sushi_app/auth/user_model.dart';
-import 'package:firebase_auth/firebase_auth.dart' as auth;
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
-  final auth.FirebaseAuth _firebaseAuth = auth.FirebaseAuth.instance;
+  final FirebaseAuth _firebaseAuth;
 
-  UserAttributes? _userFromFirebase(auth.User? user) {
-    if (user == null) {
-      return null;
+  AuthService(this._firebaseAuth);
+
+  Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
+
+  Future<String?> signIn(
+      {required String email, required String password}) async {
+    try {
+      await _firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: password);
+      return 'Signed In';
+    } on FirebaseAuthException catch (e) {
+      return e.message;
     }
-    return UserAttributes(user.uid, user.email);
   }
 
-  Stream<UserAttributes?>? get user {
-    return _firebaseAuth.authStateChanges().map(_userFromFirebase);
-  }
-
-  Future<UserAttributes?> signInWithEmailAndPassword(
-      String email, String password) async {
-    final credential = await _firebaseAuth.signInWithEmailAndPassword(
-        email: email, password: password);
-    return _userFromFirebase(credential.user);
-  }
-
-  Future<UserAttributes?> createUserWithEmailAndPassword(
-    String email,
-    String password,
-  ) async {
-    final credential = await _firebaseAuth.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
-
-    return _userFromFirebase(credential.user);
-  }
-
-  Future<void> signOut() async {
-    return await _firebaseAuth.signOut();
+  Future<String?> signUp(
+      {required String email, required String password}) async {
+    try {
+      await _firebaseAuth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      return 'Signed Up';
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
   }
 }

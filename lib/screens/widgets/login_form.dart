@@ -3,8 +3,13 @@ import 'package:sushi_app/screens/widgets/input_text_field.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
+    required this.emailController,
+    required this.passwordController,
     Key? key,
   }) : super(key: key);
+
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
 
   @override
   Widget build(BuildContext context) {
@@ -13,16 +18,16 @@ class LoginForm extends StatelessWidget {
       child: Column(
         children: <Widget>[
           InputTextField(
+            controller: emailController,
             label: 'Email',
-            onChange: (value) {},
           ),
           const SizedBox(
             height: 16,
           ),
           InputTextField(
+            controller: passwordController,
             password: true,
             label: 'Password',
-            onChange: (value) {},
           ),
         ],
       ),

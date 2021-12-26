@@ -31,7 +31,7 @@ class LoginAndRegister extends StatelessWidget {
                           borderRadius: BorderRadius.circular(25)),
                     )),
                 onPressed: () {
-                  Get.to(() => const LoginScreen());
+                  Get.to(() => LoginScreen());
                 },
                 child: const Text(
                   "Login",

@@ -6,7 +6,10 @@ import 'package:sushi_app/screens/widgets/login_button.dart';
 import 'package:sushi_app/screens/widgets/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({Key? key}) : super(key: key);
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,10 @@ class LoginScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          const LoginForm(),
+          LoginForm(
+            emailController: emailController,
+            passwordController: passwordController,
+          ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             alignment: Alignment.centerRight,
@@ -55,7 +61,10 @@ class LoginScreen extends StatelessWidget {
           const SizedBox(
             height: 60,
           ),
-          const LoginButton(),
+          LoginButton(
+            email: emailController.text,
+            password: passwordController.text,
+          ),
           Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 16),
