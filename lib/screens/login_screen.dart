@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sushi_app/auth/auth_service.dart';
 import 'package:sushi_app/screens/starter_screen.dart';
-import 'package:sushi_app/screens/widgets/login_button.dart';
-import 'package:sushi_app/screens/widgets/login_form.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -45,9 +45,66 @@ class LoginScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          LoginForm(
-            emailController: _emailController,
-            passwordController: _passwordController,
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+            child: Column(
+              children: <Widget>[
+                TextField(
+                  controller: _emailController,
+                  decoration: const InputDecoration(
+                    labelText: 'Email',
+                    labelStyle: TextStyle(color: Colors.grey),
+                    border: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xff28b8bc),
+                        width: 2,
+                      ),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xff28b8bc),
+                        width: 2,
+                      ),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.grey,
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                TextField(
+                  controller: _passwordController,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    labelText: 'password',
+                    labelStyle: TextStyle(color: Colors.grey),
+                    border: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xff28b8bc),
+                        width: 2,
+                      ),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xff28b8bc),
+                        width: 2,
+                      ),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.grey,
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -59,11 +116,42 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 60,
+            height: 48,
           ),
-          LoginButton(
-            email: _emailController.text,
-            password: _passwordController.text,
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(36),
+                color: const Color(0xff28b8bc),
+              ),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                    elevation: MaterialStateProperty.all(0),
+                    alignment: Alignment.center,
+                    padding: MaterialStateProperty.all(
+                        const EdgeInsets.only(top: 15, bottom: 15)),
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.transparent),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25)),
+                    )),
+                onPressed: () {
+                  context.read<AuthService>().signIn(
+                      email: _emailController.text,
+                      password: _passwordController.text);
+                },
+                child: const Text(
+                  "Login",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ),
           ),
           Container(
             alignment: Alignment.center,
