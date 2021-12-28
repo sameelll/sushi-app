@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sushi_app/screens/login_screen.dart';
+import 'package:sushi_app/screens/signup_screen.dart';
 
 class LoginAndRegister extends StatelessWidget {
   const LoginAndRegister({
@@ -64,7 +65,9 @@ class LoginAndRegister extends StatelessWidget {
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25)),
                         )),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => SignUpScreen());
+                    },
                     child: const Text(
                       "Register",
                       style: TextStyle(

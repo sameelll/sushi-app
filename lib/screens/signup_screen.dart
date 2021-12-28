@@ -2,15 +2,16 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sushi_app/auth/auth_service.dart';
-import 'package:sushi_app/screens/signup_screen.dart';
+import 'package:sushi_app/screens/login_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:sushi_app/screens/starter_screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatelessWidget {
+  SignUpScreen({Key? key}) : super(key: key);
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +22,13 @@ class LoginScreen extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: const Text(
-          "Login",
+          "Sign Up",
           style:
-              TextStyle(color: Color(0xff28b8bc), fontWeight: FontWeight.bold),
+              TextStyle(color: Color(0xfffb7d4e), fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
-          color: const Color(0xff28b8bc),
+          color: const Color(0xfffb7d4e),
           onPressed: () {
             Get.to(() => const StarterScreen());
           },
@@ -39,9 +40,9 @@ class LoginScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             child: const Text(
-              "Welcome Back!",
+              "Welcome",
               style: TextStyle(
-                  color: Color(0xff28b8bc),
+                  color: Color(0xfffb7d4e),
                   fontSize: 32,
                   fontWeight: FontWeight.bold),
             ),
@@ -51,19 +52,47 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 TextField(
+                  controller: _nameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Name',
+                    labelStyle: TextStyle(color: Colors.grey),
+                    border: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xfffb7d4e),
+                        width: 2,
+                      ),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xfffb7d4e),
+                        width: 2,
+                      ),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.grey,
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                TextField(
                   controller: _emailController,
                   decoration: const InputDecoration(
                     labelText: 'Email',
                     labelStyle: TextStyle(color: Colors.grey),
                     border: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Color(0xff28b8bc),
+                        color: Color(0xfffb7d4e),
                         width: 2,
                       ),
                     ),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Color(0xff28b8bc),
+                        color: Color(0xfffb7d4e),
                         width: 2,
                       ),
                     ),
@@ -86,13 +115,13 @@ class LoginScreen extends StatelessWidget {
                     labelStyle: TextStyle(color: Colors.grey),
                     border: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Color(0xff28b8bc),
+                        color: Color(0xfffb7d4e),
                         width: 2,
                       ),
                     ),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Color(0xff28b8bc),
+                        color: Color(0xfffb7d4e),
                         width: 2,
                       ),
                     ),
@@ -103,21 +132,12 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            alignment: Alignment.centerRight,
-            child: const Text(
-              'Forgot password?',
-              style: TextStyle(
-                  color: Color(0xff28b8bc), fontWeight: FontWeight.w700),
-            ),
-          ),
           const SizedBox(
-            height: 48,
+            height: 24,
           ),
           Container(
             width: double.infinity,
@@ -125,7 +145,7 @@ class LoginScreen extends StatelessWidget {
             child: DecoratedBox(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(36),
-                color: const Color(0xff28b8bc),
+                color: const Color(0xfffb7d4e),
               ),
               child: ElevatedButton(
                 style: ButtonStyle(
@@ -140,12 +160,12 @@ class LoginScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(25)),
                     )),
                 onPressed: () {
-                  context.read<AuthService>().signIn(
+                  context.read<AuthService>().signUp(
                       email: _emailController.text,
                       password: _passwordController.text);
                 },
                 child: const Text(
-                  "Login",
+                  "Register",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -161,14 +181,14 @@ class LoginScreen extends StatelessWidget {
               text: TextSpan(
                 style: const TextStyle(color: Colors.grey),
                 children: [
-                  const TextSpan(text: 'Don\'t have an account? '),
+                  const TextSpan(text: 'Alreadey have an account? '),
                   TextSpan(
-                    text: 'Register',
+                    text: 'Login',
                     style: const TextStyle(
-                        color: Color(0xff28b8bc), fontWeight: FontWeight.bold),
+                        color: Color(0xfffb7d4e), fontWeight: FontWeight.bold),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        Get.to(() => SignUpScreen());
+                        Get.to(() => LoginScreen());
                       },
                   ),
                 ],
