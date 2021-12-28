@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sushi_app/auth/auth_service.dart';
 import 'package:sushi_app/screens/widgets/google_button.dart';
 import 'package:sushi_app/screens/widgets/login_and_register.dart';
 import 'package:sushi_app/screens/widgets/slider_dot.dart';
+import 'package:provider/provider.dart';
 
 class StarterScreen extends StatelessWidget {
   const StarterScreen({Key? key}) : super(key: key);
@@ -30,7 +32,9 @@ class StarterScreen extends StatelessWidget {
           ),
           const LoginAndRegister(),
           GoogleBtn1(
-            onPressed: () {},
+            onPressed: () {
+              context.read<AuthService>().handleSignIn();
+            },
           ),
         ],
       ),
