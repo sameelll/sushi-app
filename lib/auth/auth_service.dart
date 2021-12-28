@@ -22,22 +22,26 @@ class AuthService {
     await _firebaseAuth.signOut();
   }
 
-  Future<void> signIn({required String email, required String password}) async {
+  Future<User?> signIn(
+      {required String email, required String password}) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
+      UserCredential userCredential = await _firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: password);
+      Get.to(() => const HomeScreen());
 
-      return Get.to(() => const HomeScreen());
+      return userCredential.user;
     } on FirebaseAuthException catch (e) {
       Get.snackbar('Error', e.message.toString());
     }
   }
 
-  Future<void> signUp({required String email, required String password}) async {
+  Future<User?> signUp(
+      {required String email, required String password}) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      return Get.to(() => LoginScreen());
+      UserCredential userCredential = await _firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password);
+      Get.to(() => LoginScreen());
+      return userCredential.user;
     } on FirebaseAuthException catch (e) {
       Get.snackbar('Error', e.message.toString());
     }

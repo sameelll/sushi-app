@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -168,16 +167,16 @@ class SignUpScreen extends StatelessWidget {
                           email: _emailController.text.trim(),
                           password: _passwordController.text.trim())
                       .then((value) async {
-                    User? user = FirebaseAuth.instance.currentUser;
-
-                    await FirebaseFirestore.instance
-                        .collection('users')
-                        .doc()
-                        .set({
-                      "uid": user?.uid,
-                      "email": _emailController.text,
-                      "name": _nameController.text
-                    });
+                    if (value != null) {
+                      await FirebaseFirestore.instance
+                          .collection('users')
+                          .doc(value.uid)
+                          .set({
+                        "uid": value.uid,
+                        "email": _emailController.text,
+                        "name": _nameController.text
+                      });
+                    }
                   });
                 },
                 child: const Text(
