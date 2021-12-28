@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:sushi_app/screens/home_screen.dart';
+import 'package:sushi_app/screens/home/home_screen.dart';
 import 'package:sushi_app/screens/login_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
