@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
               IconButton(
                   splashRadius: 26.0,
                   icon: const Icon(Icons.menu),
-                  color: const Color(0xff28b8bc),
+                  color: const Color(0xfffb7d4e),
                   onPressed: () {
                     scaffoldKey.currentState?.openDrawer();
                   }),
@@ -213,7 +213,7 @@ class RoundedSearchInput extends StatelessWidget {
             color: Colors.grey[500]!,
           ),
           filled: true,
-          fillColor: Colors.white,
+          fillColor: const Color(0xffF9E4C8),
           hintText: hintText,
           hintStyle:
               const TextStyle(color: Colors.grey, fontWeight: FontWeight.w300),
@@ -223,11 +223,11 @@ class RoundedSearchInput extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(45.0)),
           ),
           enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xffF6F6F6), width: 1.7),
+            borderSide: BorderSide(color: Color(0xffF9E4C8), width: 1.7),
             borderRadius: BorderRadius.all(Radius.circular(45.0)),
           ),
           focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xffF6F6F6), width: 1.7),
+            borderSide: BorderSide(color: Color(0xffF9E4C8), width: 1.7),
             borderRadius: BorderRadius.all(Radius.circular(45.0)),
           ),
         ),

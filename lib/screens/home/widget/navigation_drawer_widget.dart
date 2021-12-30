@@ -16,7 +16,7 @@ class NavigationDrawerWidget extends StatelessWidget {
 
     return Drawer(
       child: Material(
-        color: const Color(0xff28b8bc),
+        color: const Color(0xffF9E4C8),
         child: ListView(
           children: <Widget>[
             buildHeader(
@@ -34,9 +34,6 @@ class NavigationDrawerWidget extends StatelessWidget {
               padding: padding,
               child: Column(
                 children: [
-                  const SizedBox(height: 12),
-                  buildSearchField(),
-                  const SizedBox(height: 24),
                   buildMenuItem(
                     text: 'People',
                     icon: Icons.people,
@@ -102,19 +99,19 @@ class NavigationDrawerWidget extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: const TextStyle(fontSize: 20, color: Colors.white),
+                    style: const TextStyle(fontSize: 20, color: Colors.black),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     email,
-                    style: const TextStyle(fontSize: 14, color: Colors.white),
+                    style: const TextStyle(fontSize: 14, color: Colors.black),
                   ),
                 ],
               ),
               const Spacer(),
               const CircleAvatar(
                 radius: 24,
-                backgroundColor: Color.fromRGBO(30, 60, 168, 1),
+                backgroundColor: Color(0xfffb7d4e),
                 child: Icon(Icons.add_comment_outlined, color: Colors.white),
               )
             ],
@@ -122,37 +119,12 @@ class NavigationDrawerWidget extends StatelessWidget {
         ),
       );
 
-  Widget buildSearchField() {
-    const color = Colors.white;
-
-    return TextField(
-      style: const TextStyle(color: color),
-      decoration: InputDecoration(
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-        hintText: 'Search',
-        hintStyle: const TextStyle(color: color),
-        prefixIcon: const Icon(Icons.search, color: color),
-        filled: true,
-        fillColor: Colors.white12,
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
-          borderSide: BorderSide(color: color.withOpacity(0.7)),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
-          borderSide: BorderSide(color: color.withOpacity(0.7)),
-        ),
-      ),
-    );
-  }
-
   Widget buildMenuItem({
     required String text,
     required IconData icon,
     VoidCallback? onClicked,
   }) {
-    const color = Colors.white;
+    const color = Colors.black;
     const hoverColor = Colors.white70;
 
     return ListTile(
