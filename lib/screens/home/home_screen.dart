@@ -19,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: const Color(0xffF6F6F6),
         key: scaffoldKey,
         drawer: const NavigationDrawerWidget(),
         // endDrawer: NavigationDrawerWidget(),
@@ -48,7 +49,10 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Row(
                 children: const [
-                  Text('Hi, name'),
+                  Text(
+                    'Hi, Eren!',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                  ),
                 ],
               ),
               const SizedBox(
@@ -58,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: const [
                   Text(
                     "What is your\nfavorite sushi?",
-                    style: TextStyle(fontSize: 40),
+                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.w600),
                   )
                 ],
               ),
@@ -106,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   CategoryCardMallika2(
                     selected: false,
-                    image: "assets/starter-min.png",
+                    image: "assets/categories/salmon.png",
                     title: "Salmon",
                     onTap: () {
                       Get.to(() => const PeoplePage());
@@ -114,32 +118,32 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   CategoryCardMallika2(
                     selected: false,
-                    image: "assets/starter-min.png",
-                    title: "Salmon",
+                    image: "assets/categories/caviar.png",
+                    title: "Cavier",
                     onTap: () {
                       Get.to(() => const PeoplePage());
                     },
                   ),
                   CategoryCardMallika2(
                     selected: false,
-                    image: "assets/starter-min.png",
-                    title: "Salmon",
+                    image: "assets/categories/rice.png",
+                    title: "Rice",
                     onTap: () {
                       Get.to(() => const PeoplePage());
                     },
                   ),
                   CategoryCardMallika2(
                     selected: false,
-                    image: "assets/starter-min.png",
-                    title: "Salmon",
+                    image: "assets/categories/octopus.png",
+                    title: "Octopus",
                     onTap: () {
                       Get.to(() => const PeoplePage());
                     },
                   ),
                   CategoryCardMallika2(
                     selected: false,
-                    image: "assets/starter-min.png",
-                    title: "Salmon",
+                    image: "assets/categories/shrimp.png",
+                    title: "Shrimp",
                     onTap: () {
                       Get.to(() => const PeoplePage());
                     },
@@ -219,11 +223,11 @@ class RoundedSearchInput extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(45.0)),
           ),
           enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xff28b8bc), width: 1.7),
+            borderSide: BorderSide(color: Color(0xffF6F6F6), width: 1.7),
             borderRadius: BorderRadius.all(Radius.circular(45.0)),
           ),
           focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xff28b8bc), width: 1.7),
+            borderSide: BorderSide(color: Color(0xffF6F6F6), width: 1.7),
             borderRadius: BorderRadius.all(Radius.circular(45.0)),
           ),
         ),
@@ -252,16 +256,17 @@ class CategoryCardMallika2 extends StatelessWidget {
       child: Column(
         children: [
           Container(
+            padding: const EdgeInsets.all(13.0),
             decoration: BoxDecoration(
-                color: Colors.grey.shade100,
-                border: Border.all(
-                    width: selected ? 2 : 0, color: const Color(0xffFF8527)),
+                color: const Color(0xffF9E4C8),
+                border:
+                    Border.all(width: selected ? 2 : 0, color: Colors.white),
                 borderRadius: BorderRadius.circular(60.0)),
             child: ClipRRect(
               child: Image.asset(
                 image,
-                width: 45,
-                height: 45,
+                width: 25,
+                height: 25,
                 fit: BoxFit.cover,
               ),
             ),
@@ -272,8 +277,7 @@ class CategoryCardMallika2 extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-                fontSize: 16,
-                color: selected ? const Color(0xffFF8527) : Colors.black),
+                fontSize: 16, color: selected ? Colors.white : Colors.black),
           ),
         ],
       ),

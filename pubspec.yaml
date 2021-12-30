@@ -69,6 +69,11 @@ flutter:
     - assets/background-min-title.png
     - assets/starter-min.png
     - assets/google-min.png
+    - assets/categories/salmon.png
+    - assets/categories/caviar.png
+    - assets/categories/rice.png
+    - assets/categories/octopus.png
+    - assets/categories/shrimp.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -8,7 +8,7 @@ class FavouritesPage extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Favourites'),
           centerTitle: true,
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.transparent,
         ),
       );
 }
